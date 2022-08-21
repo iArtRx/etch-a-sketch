@@ -11,7 +11,8 @@ const grid = document.querySelector(".grid");
 //Create Grid
 const defaultSize = 16;
 let size = defaultSize;
-let color = "red";
+let colour = "red";
+let onPage = false;
 
 
 generateGrid = (size) => {
@@ -27,20 +28,26 @@ generateGrid = (size) => {
         cell.style.border = "1px solid black";
         grid.insertAdjacentElement("beforeend", cell);
         
-        let onPage = false;
-
-        cell.addEventListener("mousedown", () => {
+        cell.addEventListener("click", () => {
+           if(onPage === false){
+            cell.style.backgroundColor = colour;
             onPage = true;
-        })
+           }else if(onPage === true){
+            onPage = false;
+           };
+        });    
 
-        
         cell.addEventListener("mouseover", () => {
             if(onPage === true) {
-                cell.style.backgroundColor = color;
+                cell.style.backgroundColor = colour;
             }
+
         });
+    
+        
     };
 
+    
       
           
         
@@ -56,7 +63,7 @@ generateGrid(defaultSize);
 
 const colourPicker = document.querySelector("#colour")
 colourPicker.addEventListener("click", () => {
-        color = "pink";
+        colour = "pink";
     });
 
 const clear = document.querySelector("#clear")
