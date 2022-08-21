@@ -78,6 +78,19 @@ resolution.addEventListener("click", e => {
     reset();
 });
 
+document.getElementById("slider-value").textContent = size;
+
+updateSlider = () => {
+
+    size = document.getElementById("range-value").value;
+    document.getElementById("slider-value").textContent = size;
+
+    reset();
+
+}
+
+
+
 reset = () => {
     grid.innerHTML="";
     generateGrid(size);
